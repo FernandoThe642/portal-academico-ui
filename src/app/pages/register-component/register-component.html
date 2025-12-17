@@ -1,0 +1,38 @@
+<div class="register-container">
+  <h1>Registro </h1>
+
+
+  <div class="form-group">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" [(ngModel)]="userData.name" placeholder="Ej: Juan Pérez" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="userData.email" placeholder="Ej: correo@dominio.com" required>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" [(ngModel)]="userData.password" required>
+  </div>
+
+  <div class="form-group">
+  <label for="role">Rol:</label>
+  <select id="role" [(ngModel)]="userData.role" required>
+    <option value="estudiante">Estudiante</option>
+    <option value="profesor">Profesor</option>
+  </select>
+</div>
+
+
+  <button (click)="onRegister()" [disabled]="!userData.name || !userData.email || !userData.password">
+    Registrar Usuario
+  </button>
+
+<div *ngIf="message" class="message">
+  {{ message }}
+</div>
+
+
+</div>

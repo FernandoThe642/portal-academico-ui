@@ -1,0 +1,41 @@
+.register-container {
+  max-width: 450px;
+
+  margin: 50px auto; 
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  text-align: center; 
+}
+
+.form-group {
+    text-align: left; 
+    margin-bottom: 20px;
+}
+
+.success, .error {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+
+button {
+    background-color: #34495e; 
+    color: white;
+    transition: background-color 0.3s;
+}
+
+
+button:hover:not(:disabled) {
+    background-color: #4a637a; 
+}
+
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}

@@ -1,0 +1,39 @@
+<div class="home-container">
+  <h1>Recursos Multimedia</h1>
+
+
+  <div *ngIf="isLoading" class="status-message loading">Cargando recursos...</div>
+  <div *ngIf="errorMessage" class="status-message error">{{ errorMessage }}</div>
+
+  <div *ngIf="!isLoading && !errorMessage && resources.length === 0" class="status-message info">
+    No hay recursos multimedia cargados.
+  </div>
+
+
+  <div *ngIf="!isLoading && !errorMessage && resources.length > 0" class="cards">
+    <div *ngFor="let r of resources" class="card">
+      <div class="left">
+        <div class="icon">{{ getFileIcon(r.mime_type) }}</div>
+
+        <div class="main">
+          <div class="title">{{ r.original_name }}</div>
+          <div class="sub">{{ r.mime_type }}</div>
+
+          <div class="meta">
+            <span class="pill">{{ r.category_name || 'Sin categoría' }}</span>
+            <span class="dot">•</span>
+            <span>{{ formatSize(r.size_bytes) }}</span>
+            <span class="dot">•</span>
+            <span>{{ r.created_at | date:'medium' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <a class="btn" [href]="getResourceUrl(r.stored_name)" target="_blank" rel="noopener">
+          Ver / Descargar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

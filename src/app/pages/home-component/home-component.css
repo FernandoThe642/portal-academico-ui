@@ -1,0 +1,106 @@
+.home-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.status-message {
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.loading { background: #f3f4f6; }
+.error { background: #fee2e2; }
+.info { background: #e0f2fe; }
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;            /* espacio entre “rectángulos” */
+  margin-top: 16px;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 20px;
+  border: 2px solid #111;     /* borde negro como tu imagen */
+  border-radius: 18px;        /* esquinas redondeadas */
+  background: #fff;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.icon {
+  font-size: 22px;
+  width: 32px;
+  text-align: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 520px;
+}
+
+.sub {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #374151;
+}
+
+.dot {
+  color: #9ca3af;
+}
+
+.pill {
+  border: 1px solid #111;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.right {
+  margin-left: 12px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 2px solid #111;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  color: #111;
+}
+
+.btn:hover {
+  background: #f3f4f6;
+}
