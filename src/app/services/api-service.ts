@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { API_URL } from '../constanst';
 import { Observable } from 'rxjs';
+import {environment } from '../../environments/environment'
 
 export type RegisterResponse = {
   id: number;
@@ -23,7 +23,7 @@ export type RegisterRequest = {
 })
 export class ApiService {
   private http = inject(HttpClient);
-  public apiUrl = API_URL;
+  public apiUrl = environment.apiUrlL;
 
   // 1. POST /users (Registro)
   registerUser(userData: RegisterRequest): Observable<RegisterResponse> {
