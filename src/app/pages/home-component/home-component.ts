@@ -7,6 +7,7 @@ interface Resource {
   original_name: string;
   stored_name: string;
   mime_type: string;
+  file_url: string; 
   size_bytes: string | number;
   created_at: string;
   category_id: number | null;
@@ -58,10 +59,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-getResourceUrl(storedName: string): string {
-  const STATIC_ROUTE = '/temp_uploads_local';
-  return `${this.apiService.apiUrl}${STATIC_ROUTE}/${storedName}`;
-}
+
 
 
   getFileIcon(mimeType: string): string {
