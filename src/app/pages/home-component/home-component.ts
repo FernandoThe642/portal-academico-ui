@@ -58,10 +58,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getResourceUrl(storedName: string): string {
-    const STATIC_ROUTE = '/temp_uploads_local';
-    return `${this.apiService.apiUrl}${STATIC_ROUTE}/${storedName}`;
-  }
+getResourceUrl(storedName: string): string {
+  const STATIC_ROUTE = '/temp_uploads_local';
+  return `${this.apiService.apiUrl}${STATIC_ROUTE}/${storedName}`;
+}
+
 
   getFileIcon(mimeType: string): string {
     if (mimeType?.startsWith('image/')) return '🖼️';
