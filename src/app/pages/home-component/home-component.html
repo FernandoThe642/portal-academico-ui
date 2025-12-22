@@ -16,11 +16,28 @@
         <div class="left">
           <div class="icon">{{ getFileIcon(r.mime_type) }}</div>
 
-          <!-- Miniatura (solo imágenes) -->
+          <!-- Miniatura Imágenes -->
           <img *ngIf="r.mime_type.startsWith('image/')"
                [src]="apiService.getResourceViewUrl(r.id)"
                class="thumb-img"
                alt="thumbnail" />
+
+          <!-- Miniatura VIDEO -->
+          <video *ngIf="r.mime_type.startsWith('video/')"
+                [attr.src]="apiService.getResourceViewUrl(r.id)"
+                class="thumb-video"
+                preload="metadata"
+                muted
+                playsinline>
+          </video>
+
+          <!-- Miniatura PDF -->
+          <iframe *ngIf="r.mime_type === 'application/pdf'"
+                  [src]="getSafePdfUrl(r.id)"
+                  class="thumb-pdf">
+          </iframe>
+
+
 
           <div class="main">
             <div class="title">{{ r.original_name }}</div>
