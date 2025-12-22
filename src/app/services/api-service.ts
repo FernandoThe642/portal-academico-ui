@@ -23,7 +23,7 @@ export type RegisterRequest = {
 })
 export class ApiService {
   private http = inject(HttpClient);
-  public apiUrl = environment.apiUrlL;
+  public apiUrl = environment.apiUrl;
 
   // 1. POST /users (Registro)
   registerUser(userData: RegisterRequest): Observable<RegisterResponse> {
@@ -39,4 +39,15 @@ export class ApiService {
   getResources(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/resources`);
   }
+
+  // 4. (Previsualizar)
+  getResourceViewUrl(id: number): string {
+    return `${this.apiUrl}/resources/${id}/view`;
+  }
+
+  // 5. Descargar)
+  getResourceDownloadUrl(id: number): string {
+    return `${this.apiUrl}/resources/${id}/download`;
+  }
+
 }

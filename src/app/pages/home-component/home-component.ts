@@ -7,11 +7,11 @@ interface Resource {
   original_name: string;
   stored_name: string;
   mime_type: string;
-  file_url: string; 
   size_bytes: string | number;
   created_at: string;
   category_id: number | null;
   category_name: string | null;
+  showPreview?: boolean;
 }
 
 @Component({
@@ -22,7 +22,7 @@ interface Resource {
   styleUrl: './home-component.css',
 })
 export class HomeComponent implements OnInit {
-  private apiService = inject(ApiService);
+  public apiService = inject(ApiService);
   private cdr = inject(ChangeDetectorRef);
 
   resources: Resource[] = [];
@@ -42,7 +42,10 @@ export class HomeComponent implements OnInit {
       next: (data: any) => {
         console.log('Recursos recibidos:', data);
 
-        this.resources = data as Resource[];
+        this.resources = (data as Resource[]).map(r => ({
+          ...r,
+          showPreview: false
+        }));
         this.isLoading = false;         
         this.errorMessage = null;
 
@@ -58,9 +61,6 @@ export class HomeComponent implements OnInit {
       },
     });
   }
-
-
-
 
   getFileIcon(mimeType: string): string {
     if (mimeType?.startsWith('image/')) return '🖼️';
@@ -81,4 +81,9 @@ export class HomeComponent implements OnInit {
     const gb = mb / 1024;
     return `${gb.toFixed(2)} GB`;
   }
+
+  togglePreview(r: Resource): void {
+  r.showPreview = !r.showPreview;
+}
+
 }

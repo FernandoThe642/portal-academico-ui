@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrlL: 'http://ALB-Portal-Academico-XXXX.us-east-1.elb.amazonaws.com'
+  apiUrl: 'http://ALB-Portal-Academico-1237956802.us-east-1.elb.amazonaws.com'
 };
