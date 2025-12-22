@@ -1,5 +1,6 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ApiService } from '../../services/api-service';
 
 interface Resource {
@@ -61,6 +62,14 @@ export class HomeComponent implements OnInit {
       },
     });
   }
+
+  private sanitizer = inject(DomSanitizer);
+
+    getSafePdfUrl(id: number): SafeResourceUrl {
+      const url = this.apiService.getResourceViewUrl(id);
+      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+
 
   getFileIcon(mimeType: string): string {
     if (mimeType?.startsWith('image/')) return '🖼️';

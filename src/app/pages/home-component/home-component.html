@@ -56,12 +56,20 @@
              [src]="apiService.getResourceViewUrl(r.id)"
              class="preview-img"
              alt="preview" />
+          <!-- Video -->
+          <video *ngIf="r.mime_type.startsWith('video/')"
+                [src]="apiService.getResourceViewUrl(r.id)"
+                class="preview-video"
+                controls
+                preload="metadata">
+          </video>
 
         <!-- PDF -->
         <iframe *ngIf="r.mime_type === 'application/pdf'"
-                [src]="apiService.getResourceViewUrl(r.id)"
+                [src]="getSafePdfUrl(r.id)"
                 class="preview-pdf">
         </iframe>
+
 
         <!-- No soportado -->
         <div *ngIf="!r.mime_type.startsWith('image/') && r.mime_type !== 'application/pdf'"
